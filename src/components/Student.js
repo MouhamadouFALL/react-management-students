@@ -1,9 +1,12 @@
 import React from "react";
 
-function Student(props) {
+function Student({learner, handleDelete}) {
     
     return (
-        <li>{props.nom}</li>
+        <div>
+            {learner.nom}
+            <button onClick={handleDelete.bind(this, learner.id)}>X</button>
+        </div>
     )
 }
 

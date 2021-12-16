@@ -14,6 +14,15 @@ class Classroom extends Component {
                 {id:4, nom:"Python Van"}
             ]
         }
+
+        this.handleDelete = this.handleDelete.bind(this);
+    }
+
+    // Supprimer l'utilisateur
+    handleDelete(id) {
+        this.setState(prevstate => ({
+            students : prevstate.students.filter(student => student.id !== id)
+        }))
     }
 
     render() {
@@ -26,7 +35,8 @@ class Classroom extends Component {
                     (!learners.length)? <p>Aucun étudiant</p> :
                     learners.map( learner => <Student 
                             key={learner.id}
-                            nom={learner.nom}
+                            learner={learner}
+                            handleDelete={this.handleDelete}
                     />)
                 }
                 {/*<ul>
