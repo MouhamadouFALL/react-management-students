@@ -21,12 +21,20 @@ class Classroom extends Component {
         return (
             <div>
                 <h1>Liste des étudiants de {this.props.nom}</h1>
-                <ul>
+                {/* Utilisation des Listes*/}
+                {
+                    (!learners.length)? <p>Aucun étudiant</p> :
+                    learners.map( learner => <Student 
+                            key={learner.id}
+                            nom={learner.nom}
+                    />)
+                }
+                {/*<ul>
                     <Student nom={learners[0].nom} />
-                    <Student nom={learners[1].nom} />
-                    <Student nom={learners[2].nom} />
-                    <Student nom={learners[3].nom} />
-                </ul>
+                    //<Student nom={learners[1].nom} />
+                    //<Student nom={learners[2].nom} />
+        //<Student nom={learners[3].nom} />
+                </ul>*/}
             </div>
         )
     }
