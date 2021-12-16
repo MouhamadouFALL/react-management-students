@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 
 import Student from "./Student";
+import AddStudent from "./AddStudent";
 
 class Classroom extends Component {
 
@@ -29,6 +30,7 @@ class Classroom extends Component {
         const learners = this.state.students
         return (
             <div>
+                <AddStudent />
                 <h1>Liste des étudiants de {this.props.nom}</h1>
                 {/* Utilisation des Listes*/}
                 {
