@@ -7,6 +7,10 @@
     {
       "nom": "Python Guido",
       "id": 2
+    },
+    {
+      "nom": "JavaScript",
+      "id": 3
     }
   ]
 }
