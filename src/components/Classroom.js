@@ -26,11 +26,15 @@ class Classroom extends Component {
         }))
     }
 
+    handleAdd = nom => {
+        const newStudent = {id: Date.now(), nom: nom};
+        this.setState({ students : [...this.state.students, newStudent] });
+    }
     render() {
         const learners = this.state.students
         return (
             <div>
-                <AddStudent />
+                <AddStudent handleAdd = {this.handleAdd} />
                 <h1>Liste des étudiants de {this.props.nom}</h1>
                 {/* Utilisation des Listes*/}
                 {
