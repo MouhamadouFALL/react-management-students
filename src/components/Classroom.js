@@ -13,6 +13,7 @@ class Classroom extends Component {
         this.handleDelete = this.handleDelete.bind(this);
     }
 
+    // Récupérer tous les étudiants dans la base learners
     componentDidMount() {
         axios.get('http://localhost:3003/learners')
         .then( res => {
@@ -22,8 +23,14 @@ class Classroom extends Component {
         .catch( error => this.setState({ error, isLoading: false}))
     }
 
-    // Supprimer l'utilisateur
+    // Supprimer un étudiant
     handleDelete(id) {
+        axios.delete('http://localhost:3003/learners/' + id)
+        .then( res => this.setState(prevState => ({
+            students: prevState.students.filter(student => student.id !== id)
+        })))
+        .catch(error => this.setState({error: error, isLoading: false}))
+
         this.setState(prevstate => ({
             students : prevstate.students.filter(student => student.id !== id)
         }))

@@ -1,16 +1,12 @@
 {
-    "learners" : [
-        {
-            "id": 1, 
-            "nom": "Java Oracle"
-        },
-        {
-            "id": 2,
-            "nom": "Python Guido"
-        },
-        {
-            "id": 3,
-            "nom": "JavaScript Web"
-        }
-    ]
+  "learners": [
+    {
+      "id": 2,
+      "nom": "Python Guido"
+    },
+    {
+      "id": 3,
+      "nom": "JavaScript Web"
+    }
+  ]
 }
