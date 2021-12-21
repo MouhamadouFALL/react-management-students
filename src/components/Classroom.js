@@ -2,21 +2,24 @@ import React, {Component} from "react";
 
 import Student from "./Student";
 import AddStudent from "./AddStudent";
+import axios from "axios";
 
 class Classroom extends Component {
 
     constructor() {
         super();
-        this.state = {
-            students : [
-                {id:1, nom:"React Meta"},
-                {id:2, nom:"JavaScript Dev"},
-                {id:3, nom:"Java Oracle"},
-                {id:4, nom:"Python Van"}
-            ]
-        }
+        this.state = {isLoading: true, students : [], error: null }
 
         this.handleDelete = this.handleDelete.bind(this);
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:3003/learners')
+        .then( res => {
+            const students = res.data;
+            this.setState({ students, isLoading: false });
+        })
+        .catch( error => this.setState({ error, isLoading: false}))
     }
 
     // Supprimer l'utilisateur
@@ -32,6 +35,7 @@ class Classroom extends Component {
     }
     render() {
         const learners = this.state.students
+        const isLoading = this.state.isLoading;
         return (
             <div>
                 <AddStudent handleAdd = {this.handleAdd} />
@@ -39,6 +43,7 @@ class Classroom extends Component {
                 {/* Utilisation des Listes*/}
                 {
                     (!learners.length)? <p>Aucun étudiant</p> :
+                    (isLoading)? <p>Loading ...</p> :
                     learners.map( learner => <Student 
                             key={learner.id}
                             learner={learner}
