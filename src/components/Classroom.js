@@ -36,9 +36,14 @@ class Classroom extends Component {
         }))
     }
 
+    // Ajouter un étudiant dans la base learners
     handleAdd = nom => {
-        const newStudent = {id: Date.now(), nom: nom};
-        this.setState({ students : [...this.state.students, newStudent] });
+        axios.post('http://localhost:3003/learners/', {nom})
+        .then( res => {
+            this.setState({
+                students: [...this.state.students, res.data]
+            });
+        })
     }
     render() {
         const learners = this.state.students
