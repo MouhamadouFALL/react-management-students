@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm i`   or   ### `npm install`
+### `npm i`   or   `npm install`
 
 ### `npx json-server --watch learners.json --port 3333`
 
